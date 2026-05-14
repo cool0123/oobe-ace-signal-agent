@@ -1,0 +1,27 @@
+{
+  "name": "oobe-ace-signal-agent",
+  "version": "0.1.0",
+  "description": "Autonomous Solana signal agent demo using SAP discovery flow, Ace Data Cloud service planning, and x402 payment tracing.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "start": "node src/index.js",
+    "demo": "node src/index.js --mode dry-run",
+    "live": "node src/index.js --mode live",
+    "check": "node src/index.js --mode dry-run --json",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "solana",
+    "sap",
+    "x402",
+    "acedatacloud",
+    "oobe",
+    "autonomous-agent"
+  ],
+  "author": "cool0123",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
