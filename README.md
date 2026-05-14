@@ -29,6 +29,8 @@ npm run serve
 
 Open `http://localhost:5180`.
 
+Public demo: https://cool0123.github.io/oobe-ace-signal-agent/public/
+
 ## Live mode
 
 Copy `.env.example` to `.env`, then add the required Synapse, Ace Data Cloud, and wallet values.
