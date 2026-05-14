@@ -1,5 +1,5 @@
 import { aceServices, sapDiscoveryPlan } from './services.js';
-import { runAceChatCompletion } from './aceClient.js';
+import { previewAceX402Requirement, runAceChatCompletion } from './aceClient.js';
 
 const demoTokens = [
   { symbol: 'SOL', liquidityUsd: 184000000, volume24hUsd: 980000000, holderRisk: 'low' },
@@ -64,7 +64,15 @@ export async function runSignalAgent(config, log) {
   }
 
   let liveAceResult = null;
+  let x402Requirement = null;
   if (config.mode === 'live') {
+    x402Requirement = await previewAceX402Requirement();
+    log.step('ace.x402.requirement_preview', {
+      status: x402Requirement.status,
+      x402Version: x402Requirement.x402Version,
+      accepts: x402Requirement.accepts,
+    });
+
     liveAceResult = await runAceChatCompletion(config);
     log.step('ace.live.chat_completion', {
       ok: liveAceResult.ok,
@@ -90,6 +98,7 @@ export async function runSignalAgent(config, log) {
     ],
     scoredTokens,
     paymentTraces,
+    x402Requirement,
     liveAceResult,
     selectedServices: discoveredTools,
     nextLiveSteps: [

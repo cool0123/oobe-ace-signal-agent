@@ -35,3 +35,39 @@ export async function runAceChatCompletion(config) {
     usage: data.usage || null,
   };
 }
+
+export async function previewAceX402Requirement() {
+  const response = await fetch('https://api.acedata.cloud/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'user',
+          content: 'Say hi in 3 words',
+        },
+      ],
+      max_tokens: 10,
+    }),
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  return {
+    status: response.status,
+    x402Version: data.x402Version || null,
+    accepts: Array.isArray(data.accepts)
+      ? data.accepts.map((item) => ({
+          network: item.network,
+          scheme: item.scheme,
+          maxAmountRequired: item.maxAmountRequired,
+          resource: item.resource,
+          asset: item.asset,
+          payTo: item.payTo,
+        }))
+      : [],
+  };
+}
