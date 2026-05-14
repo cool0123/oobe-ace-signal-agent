@@ -50,6 +50,18 @@ Verified call:
 - Result: `Solana signal agent live check passed.`
 - Usage: 28 total tokens
 
+## x402 requirement preview
+
+Calling the same Ace endpoint without an API token returns an x402 payment requirement.
+
+Verified `402 Payment Required` preview:
+
+- Resource: `/v1/chat/completions`
+- Scheme: `exact`
+- Amount: `95215` micro-USD
+- Networks: Base, Solana, SKALE
+- Solana USDC asset: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`
+
 ## Bounty category
 
 This project targets the Ace Data Cloud Usage category. The workflow is organized around three distinct Ace Data Cloud services and a clear x402 payment trace.
