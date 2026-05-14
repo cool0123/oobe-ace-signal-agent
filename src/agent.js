@@ -1,4 +1,5 @@
 import { aceServices, sapDiscoveryPlan } from './services.js';
+import { runAceChatCompletion } from './aceClient.js';
 
 const demoTokens = [
   { symbol: 'SOL', liquidityUsd: 184000000, volume24hUsd: 980000000, holderRisk: 'low' },
@@ -62,6 +63,20 @@ export async function runSignalAgent(config, log) {
     });
   }
 
+  let liveAceResult = null;
+  if (config.mode === 'live') {
+    liveAceResult = await runAceChatCompletion(config);
+    log.step('ace.live.chat_completion', {
+      ok: liveAceResult.ok,
+      status: liveAceResult.status,
+      model: liveAceResult.model,
+      content: liveAceResult.content,
+      usage: liveAceResult.usage,
+      skipped: liveAceResult.skipped,
+      reason: liveAceResult.reason,
+    });
+  }
+
   const report = {
     title: 'OOBE Ace Signal Agent Run',
     category: 'Ace Data Cloud Usage',
@@ -75,6 +90,7 @@ export async function runSignalAgent(config, log) {
     ],
     scoredTokens,
     paymentTraces,
+    liveAceResult,
     selectedServices: discoveredTools,
     nextLiveSteps: [
       'Register the agent on SAP mainnet with the public endpoint',
