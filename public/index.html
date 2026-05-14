@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OOBE Ace Signal Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Autonomous Solana workflow demo</p>
+        <h1>OOBE Ace Signal Agent</h1>
+        <p class="lead">
+          A small agent demo that discovers SAP-compatible tools, selects three Ace Data Cloud services,
+          traces x402 payment requirements, and produces a Solana signal report without manual steps.
+        </p>
+        <div class="actions">
+          <button id="run-demo">Run dry-run workflow</button>
+          <a href="https://superteam.fun/earn/listing/autonomous-agent-bounty-oobe-ace-data-cloud" target="_blank" rel="noreferrer">Bounty listing</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article>
+          <h2>Workflow</h2>
+          <ol id="workflow"></ol>
+        </article>
+        <article>
+          <h2>Ace Data Cloud services</h2>
+          <div id="services" class="cards"></div>
+        </article>
+        <article>
+          <h2>Token signal scores</h2>
+          <div id="tokens" class="cards"></div>
+        </article>
+        <article>
+          <h2>x402 payment trace</h2>
+          <div id="payments" class="cards"></div>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
